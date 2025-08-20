@@ -17,24 +17,11 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-  Color maleCardColor = inactiveCarColour;
+  Color maleCardColor = activeCardColour;
   Color femaleCardColor = inactiveCarColour;
 
-  genderCardPressed(Gender selectedGender) {
-    setState(() {
-      if (selectedGender == Gender.male) {
-        if (maleCardColor == inactiveCarColour) {
-          maleCardColor = activeCardColour;
-          femaleCardColor = inactiveCarColour;
-        }
-      } else if (selectedGender == Gender.female) {
-        if (femaleCardColor == inactiveCarColour) {
-          femaleCardColor = activeCardColour;
-          maleCardColor = inactiveCarColour;
-        }
-      }
-    });
-  }
+  bool maleCardIsActive = true;
+  bool femaleCardIsActive = false;
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +37,16 @@ class _InputPageState extends State<InputPage> {
                 children: [
                   Expanded(
                     child: GestureDetector(
-                      onTap: () => genderCardPressed(Gender.male),
+                      onTap: () {
+                        maleCardIsActive
+                            ? {}
+                            : setState(() {
+                                maleCardColor = activeCardColour;
+                                femaleCardColor = inactiveCarColour;
+                                maleCardIsActive = true;
+                                femaleCardIsActive = false;
+                              });
+                      },
                       child: MyCard(
                         colour: maleCardColor,
                         cardChild: IconsContent(
@@ -62,7 +58,16 @@ class _InputPageState extends State<InputPage> {
                   ),
                   Expanded(
                     child: GestureDetector(
-                      onTap: () => genderCardPressed(Gender.female),
+                      onTap: () {
+                        femaleCardIsActive
+                            ? {}
+                            : setState(() {
+                                femaleCardColor = activeCardColour;
+                                maleCardColor = inactiveCarColour;
+                                femaleCardIsActive = true;
+                                maleCardIsActive = false;
+                              });
+                      },
                       child: MyCard(
                         colour: femaleCardColor,
                         cardChild: IconsContent(
