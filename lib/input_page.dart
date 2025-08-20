@@ -36,7 +36,6 @@ class _InputPageState extends State<InputPage> {
                       onTap: () {
                         setState(() {
                           selectedGender = Gender.male;
-                          selectedGender = Gender.male;
                         });
                       },
                       child: MyCard(
