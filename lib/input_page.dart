@@ -9,6 +9,8 @@ const iconsSize = 60.0;
 const cardWidth = 200.0;
 const cardHeight = 170.0;
 
+enum Gender { male, female }
+
 class InputPage extends StatefulWidget {
   @override
   _InputPageState createState() => _InputPageState();
@@ -18,14 +20,14 @@ class _InputPageState extends State<InputPage> {
   Color maleCardColor = inactiveCarColour;
   Color femaleCardColor = inactiveCarColour;
 
-  genderCardPressed(int gender) {
+  genderCardPressed(Gender selectedGender) {
     setState(() {
-      if (gender == 1) {
+      if (selectedGender == Gender.male) {
         if (maleCardColor == inactiveCarColour) {
           maleCardColor = activeCardColour;
           femaleCardColor = inactiveCarColour;
         }
-      } else {
+      } else if (selectedGender == Gender.female) {
         if (femaleCardColor == inactiveCarColour) {
           femaleCardColor = activeCardColour;
           maleCardColor = inactiveCarColour;
@@ -48,7 +50,7 @@ class _InputPageState extends State<InputPage> {
                 children: [
                   Expanded(
                     child: GestureDetector(
-                      onTap: () => genderCardPressed(1),
+                      onTap: () => genderCardPressed(Gender.male),
                       child: MyCard(
                         colour: maleCardColor,
                         cardChild: IconsContent(
@@ -60,7 +62,7 @@ class _InputPageState extends State<InputPage> {
                   ),
                   Expanded(
                     child: GestureDetector(
-                      onTap: () => genderCardPressed(2),
+                      onTap: () => genderCardPressed(Gender.female),
                       child: MyCard(
                         colour: femaleCardColor,
                         cardChild: IconsContent(
