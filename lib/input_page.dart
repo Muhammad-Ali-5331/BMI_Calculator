@@ -32,39 +32,35 @@ class _InputPageState extends State<InputPage> {
               child: Row(
                 children: [
                   Expanded(
-                    child: GestureDetector(
-                      onTap: () {
+                    child: MyCard(
+                      colour: selectedGender == Gender.male
+                          ? activeCardColour
+                          : inactiveCarColour,
+                      cardChild: IconsContent(
+                        icn: Icon(Icons.male, size: iconsSize),
+                        txt: 'Male',
+                      ),
+                      onPress: () {
                         setState(() {
                           selectedGender = Gender.male;
                         });
                       },
-                      child: MyCard(
-                        colour: selectedGender == Gender.male
-                            ? activeCardColour
-                            : inactiveCarColour,
-                        cardChild: IconsContent(
-                          icn: Icon(Icons.male, size: iconsSize),
-                          txt: 'Male',
-                        ),
-                      ),
                     ),
                   ),
                   Expanded(
-                    child: GestureDetector(
-                      onTap: () {
+                    child: MyCard(
+                      colour: selectedGender == Gender.female
+                          ? activeCardColour
+                          : inactiveCarColour,
+                      cardChild: IconsContent(
+                        icn: Icon(Icons.female, size: iconsSize),
+                        txt: 'Female',
+                      ),
+                      onPress: () {
                         setState(() {
                           selectedGender = Gender.female;
                         });
                       },
-                      child: MyCard(
-                        colour: selectedGender == Gender.female
-                            ? activeCardColour
-                            : inactiveCarColour,
-                        cardChild: IconsContent(
-                          icn: Icon(Icons.female, size: iconsSize),
-                          txt: 'Female',
-                        ),
-                      ),
                     ),
                   ),
                 ],
@@ -73,7 +69,11 @@ class _InputPageState extends State<InputPage> {
 
             // Middle Card
             Expanded(
-              child: MyCard(colour: activeCardColour, cardChild: Container()),
+              child: MyCard(
+                colour: activeCardColour,
+                cardChild: Container(),
+                onPress: () {},
+              ),
             ),
 
             // Last Row
@@ -84,12 +84,14 @@ class _InputPageState extends State<InputPage> {
                     child: MyCard(
                       colour: activeCardColour,
                       cardChild: Container(),
+                      onPress: () {},
                     ),
                   ),
                   Expanded(
                     child: MyCard(
                       colour: activeCardColour,
                       cardChild: Container(),
+                      onPress: () {},
                     ),
                   ),
                 ],
