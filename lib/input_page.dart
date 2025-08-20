@@ -36,6 +36,7 @@ class _InputPageState extends State<InputPage> {
                       onTap: () {
                         setState(() {
                           selectedGender = Gender.male;
+                          selectedGender = Gender.male;
                         });
                       },
                       child: MyCard(
@@ -52,7 +53,9 @@ class _InputPageState extends State<InputPage> {
                   Expanded(
                     child: GestureDetector(
                       onTap: () {
-                        selectedGender = Gender.female;
+                        setState(() {
+                          selectedGender = Gender.female;
+                        });
                       },
                       child: MyCard(
                         colour: selectedGender == Gender.female
