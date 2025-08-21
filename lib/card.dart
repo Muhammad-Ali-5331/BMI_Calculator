@@ -1,23 +1,17 @@
 import 'package:flutter/material.dart';
-
-const borderRadius = 15.0;
-const widgetsMargin = 15.0;
+import 'constants.dart';
 
 class MyCard extends StatelessWidget {
   final Color colour;
   final Widget cardChild;
-  final Function onPress;
+  final VoidCallback? onPress; // nullable now
 
-  MyCard({
-    required this.colour,
-    required this.cardChild,
-    required this.onPress,
-  });
+  MyCard({required this.colour, required this.cardChild, this.onPress});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => onPress(),
+      onTap: onPress,
       child: Container(
         margin: EdgeInsets.all(widgetsMargin),
         decoration: BoxDecoration(
