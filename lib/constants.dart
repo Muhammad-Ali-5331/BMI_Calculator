@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 // # --- Input Page's --- #
 const activeCardColour = Color(0xFF1D1E33);
-const inactiveCarColour = Color(0xFF111328);
+const inactiveCardColour = Color(0xFF111328);
 const bottomColor = Color(0xFFEB1555);
 const iconsSize = 60.0;
 const cardWidth = 200.0;
@@ -12,6 +12,12 @@ const numbersTextStyle = TextStyle(
   fontSize: 50.0,
   fontWeight: FontWeight.w900,
 );
+
+double minWeight = 2.0;
+double maxWeight = 200;
+
+double minAge = 0;
+double maxAge = 122;
 
 // # --- Icons Page's --- #
 const sizeBoxHeight = 15.0;
