@@ -194,12 +194,17 @@ class _InputPageState extends State<InputPage> {
             ),
 
             // Bottom Button
-            Container(
-              alignment: Alignment.center,
-              color: bottomColor,
-              height: 70.0,
-              margin: EdgeInsets.only(top: 10.0),
-              child: Text('Calculate BMI', style: TextStyle(fontSize: 23.0)),
+            GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, 'results_page');
+              },
+              child: Container(
+                alignment: Alignment.center,
+                color: bottomColor,
+                height: 70.0,
+                margin: EdgeInsets.only(top: 10.0),
+                child: Text('Calculate BMI', style: TextStyle(fontSize: 23.0)),
+              ),
             ),
           ],
         ),
