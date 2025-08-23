@@ -1,8 +1,10 @@
+import 'package:bmi_calculator/calculator.dart';
+import 'package:bmi_calculator/screens/result_page.dart';
 import 'package:flutter/material.dart';
-import 'icons_data.dart';
-import 'card.dart';
-import 'constants.dart';
-import 'round_button.dart';
+import '../components/icons_data.dart';
+import '../components/card.dart';
+import '../constants.dart';
+import '../components/round_button.dart';
 
 enum Gender { male, female }
 
@@ -81,7 +83,7 @@ class _InputPageState extends State<InputPage> {
                       children: [
                         Text(
                           height.toStringAsFixed(1),
-                          style: numbersTextStyle,
+                          style: kNumbersTextStyle,
                         ),
                         Text('cm', style: smallTextStyle),
                       ],
@@ -127,7 +129,7 @@ class _InputPageState extends State<InputPage> {
                           Text('WEIGHT', style: smallTextStyle),
                           Text(
                             weight.toStringAsFixed(0),
-                            style: numbersTextStyle,
+                            style: kNumbersTextStyle,
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -162,7 +164,10 @@ class _InputPageState extends State<InputPage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text('AGE', style: smallTextStyle),
-                          Text(age.toStringAsFixed(0), style: numbersTextStyle),
+                          Text(
+                            age.toStringAsFixed(0),
+                            style: kNumbersTextStyle,
+                          ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -196,14 +201,27 @@ class _InputPageState extends State<InputPage> {
             // Bottom Button
             GestureDetector(
               onTap: () {
-                Navigator.pushNamed(context, 'results_page');
+                Calculator RESULT = Calculator(height: height, weight: weight);
+                RESULT.calculateBMI();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return ResultsPage(CALCULATIONS: RESULT);
+                    },
+                  ),
+                );
               },
               child: Container(
                 alignment: Alignment.center,
                 color: bottomColor,
                 height: 70.0,
                 margin: EdgeInsets.only(top: 10.0),
-                child: Text('Calculate BMI', style: TextStyle(fontSize: 23.0)),
+                padding: EdgeInsets.only(bottom: 3.0),
+                child: Text(
+                  'CALCULATE BMI',
+                  style: kNavigationButtonsTextStyle,
+                ),
               ),
             ),
           ],
