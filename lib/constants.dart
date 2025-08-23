@@ -7,9 +7,15 @@ const bottomColor = Color(0xFFEB1555);
 const iconsSize = 60.0;
 const cardWidth = 200.0;
 const cardHeight = 170.0;
-const numbersTextStyle = TextStyle(
+const kNumbersTextStyle = TextStyle(
   color: Colors.white,
   fontSize: 50.0,
+  fontWeight: FontWeight.w900,
+);
+
+const kNavigationButtonsTextStyle = TextStyle(
+  color: Colors.white,
+  fontSize: 30.0,
   fontWeight: FontWeight.w900,
 );
 
@@ -30,3 +36,14 @@ const smallTextStyle = TextStyle(color: textColor, fontSize: 23.5);
 // # --- Card's --- #
 const borderRadius = 15.0;
 const widgetsMargin = 15.0;
+
+// # --- Result Page's --- #
+
+const kResultShortMsgTextStyle = TextStyle(color: Colors.green, fontSize: 23.5);
+const kResultNumberTextStyle = TextStyle(
+  color: Colors.white,
+  fontSize: 70.0,
+  fontWeight: FontWeight.w900,
+);
+
+const kResultMsgTextStyle = TextStyle(color: Colors.white, fontSize: 23.0);
